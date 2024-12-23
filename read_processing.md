@@ -218,18 +218,11 @@ samtools index -@ ${threads} ${out}.clean.sorted.bam
 samtools stats -@ ${threads} ${out}.clean.sorted.bam > ${out}.bamstats
 ```
 
-_summarize all output in `data.summary.csv`_
+_summary read processing and mapping_
 
-```bash
-# Printer table header
-echo -e "ID,raw reads,raw bases,trimmed reads,trimmed bases,mapped reads,mapped bases,coverage" > data.summary.csv
-
-# Loop to write to output for each bird sample
-while read i
-   do
-   reads=$(grep -e "total reads:" -e "total bases:" ${i}/${i}.html | perl -ne '/>([0-9.]* [MG])/; print "$1\n"' | tr "\n" "," | perl -ne 'print "$_\n"')
-   mapped=$(grep -e "reads mapped and paired:" -e "bases mapped:" ${i}/${i}.bamstats | cut -f3 | tr "\n" "," | perl -ne 'chomp(); @a=split /,/;$b = $a[1] / 1165951862; print "$_$b\n"')
-   echo -e "${i},${reads}${mapped}" >> data.summary.csv
-   done < samples.txt
-```
-
+| Pool | Total Reads | Total Bases | Final Mapped Reads | Final Mapped Bases | Coverage |
+| --- | --- | --- | --- | --- | --- |
+|  Early Spring (B1)   | 221,175,638 | 33,176,345,700 | 155,058,598 | 23,206,006,755 | 19.6X |
+|  Late Spring (B2)    | 252,693,396 | 37,904,009,400 | 180,065,148 | 26,946,019,375 | 22.8X |
+|  Early Autumn (C1)   | 283,348,942 | 42,502,341,300 | 205,707,653 | 30,786,752,521 | 26.0X |
+|  Late Autumn (C2)    | 246,461,602 | 36,969,240,300 | 182,161,554 | 27,263,167,754 | 23.0X |
