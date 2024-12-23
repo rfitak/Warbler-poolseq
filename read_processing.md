@@ -56,6 +56,8 @@ seqstats Aarun.fa
    #   Max seq:	3522511 bp
 ```
 The reference genome was indexed using [_bwa 0.7.17_](https://github.com/lh3/bwa).
+
+```
 # Index the reference genome
 bwa index Aarun.fa
 ```
