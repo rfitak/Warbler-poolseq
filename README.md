@@ -1,6 +1,3 @@
-# Warbler-poolseq
-This repository contains the code for analyzing whole-genome pooled sequencing (pool-seq) data in great reed warblers
-
 <h3><p align="center">Supplementary Methods for:</p></h3>
 <h2><p align="center">The influence of genes on the migratory timing of great reed warblers (<i>Acrocephalus arundinaceus</i>)</p></h2>
 
