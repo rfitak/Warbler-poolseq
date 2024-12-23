@@ -1,7 +1,7 @@
-###### *Step 4: Run the poolseq pipeline
-Now that all our pooled BAM files are prepared, we are ready to run the poolseq analysis pipeline.  We are using [popoolation2 v1.201](https://sourceforge.net/p/popoolation2/wiki/Main/) ([Kofler et al. 2011](https://doi.org/10.1093/bioinformatics/btr589)). For additional details, please see their review paper in *Nature Reviews Genetics* ([Schlötterer et al. 2014](https://doi.org/10.1093/bioinformatics/btr589)) or this useful tutorial by Joanna Griffiths in the ***MarineOmics*** group (https://marineomics.github.io/POP_03_poolseq.html).
+# Pool-seq Analysis with _Popoolation2_
+Now that all our pooled BAM files are prepared, we are ready to run the pool-seq analysis pipeline.  We used [popoolation2 v1.201](https://sourceforge.net/p/popoolation2/wiki/Main/) ([Kofler et al. 2011](https://doi.org/10.1093/bioinformatics/btr589)). For additional details, please see their review paper in *Nature Reviews Genetics* ([Schlötterer et al. 2014](https://doi.org/10.1093/bioinformatics/btr589)) or this useful tutorial by Joanna Griffiths in the ***MarineOmics*** group (https://marineomics.github.io/POP_03_poolseq.html).
 
-Below, the mandatory parameter `max-coverage` was calculated as 2.5X the mean coverage across pools (see table above).
+Below, the mandatory parameter `max-coverage` was calculated as 2.5X the mean coverage across pools.
 
 -  (17.677 + 27.811 + 34.672 + 40.877 + 17.678 + 20.994 + 24.306) / 7 * 2.5 = 65.720 = 66
 
