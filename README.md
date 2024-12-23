@@ -50,3 +50,4 @@ ___This GitHub repository contains a summary of the various code, software, and 
 | FASTP | 0.20.0 | [Chen et al. fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics 34, i884–i890 (2018).](https://doi.org/10.1093/bioinformatics/bty560) |
 | SAMTOOLS | 1.18 | [Li, H. et al. The Sequence Alignment/Map format and SAMtools. Bioinformatics 25, 2078-2079 (2009).](https://doi.org/10.1093/bioinformatics/btp352) |
 | BWA | 0.7.17 | [Li and Durbin. Fast and accurate short read alignment with Burrows–Wheeler transform. Bioinformatics 25, 1754–1760 (2009).](https://doi.org/10.1093/bioinformatics/btp324) |
+| POPOOLATION2 | 1.201 | [Kofler et al. PoPoolation2: identifying differentiation between populations using sequencing of pooled DNA samples (Pool-Seq). Bioinformatics 27, 3435–3436 (2011).](https://doi.org/10.1093/bioinformatics/btr589) |
