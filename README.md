@@ -27,9 +27,17 @@ ___This GitHub repository contains a summary of the various code, software, and 
 <h2><p align="center">Table of Contents</p></h2>
 <div align="center">
  
-[Read processing, cleaning, and error-correction](./read_processing.md)
+[Read processing and cleaning](./read_processing.md)
 
-[SNP Calling](./snp-calling.md)
+[Pool-seq analysis: <i>Popoolation2</i>](./popoolation2.md)
+
+[Pool-seq analysis: <i>genedalf</i>](./grenedalf.md)
+
+[Window analysis: <i>GenWin</i>](./windows.md)
+
+[Enrichment analysis](./enrichment.md)
+
+[Alternative Reference Genome Complete Analysis](./alternate-genome.md)
 
 </div>
 
