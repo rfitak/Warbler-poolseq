@@ -220,7 +220,7 @@ samtools stats -@ ${threads} ${out}.clean.sorted.bam > ${out}.bamstats
 
 _summary read processing and mapping_
 
-| Pool | Total Reads | Total Bases | Final Mapped Reads | Final Mapped Bases | Final Coverage |
+| Pool | Raw Total Reads | Raw Total Bases | Final Mapped Reads | Final Mapped Bases | Final Coverage |
 | --- | --- | --- | --- | --- | --- |
 |  Early Spring (B1)   | 221,175,638 | 33,176,345,700 | 155,058,598 | 23,206,006,755 | 19.6X |
 |  Late Spring (B2)    | 252,693,396 | 37,904,009,400 | 180,065,148 | 26,946,019,375 | 22.8X |
