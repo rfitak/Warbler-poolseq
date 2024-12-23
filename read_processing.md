@@ -5,8 +5,7 @@ According to the sequencing provider _Novogene_, the following initial quality f
 1. Reads containing adapters were removed.
 2. Reads containing N > 10% (N represents the base cannot be determined) were removed.
 3. Reads containing >50% low quality (Qscore<= 5) bases were removed.
-
-***Sequencing Adapters***  
+ 
 According to the sequencing provider *Novogene*, the sequencing adapters below were used:
 - **5' Adapter:** 5'-AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT-3'
 - **3' Adapter:** 5'-GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGATGACTATCTCGTATGCCGTCTTCTGCTTG-3'
