@@ -67,22 +67,18 @@ bwa index Aarun.fa
 The reads were cleaned and mapped to the reference genome. The in-house pipeline, `supermapper` v5.3 was used for this process. `supermapper` cleans all the reads (including adapter removal) using [*fastp v0.20.0*](https://github.com/OpenGene/fastp) ([Chen et al. 2018](https://doi.org/10.1093/bioinformatics/bty560)) then maps then to the reference using [*bwa*](https://bio-bwa.sourceforge.net). The resulting BAM files are sorted, duplicates removed, then conservatively cleaned to remove improper reads. Once mapping was complete, the summary stats were generated from the resulting *BAM* files (`${name}.bamstats`). Additional details of various trimming and cleaning parameters are detailed below the code. The `supermapper` command is below, then the additional details within each step of the `supermapper` pipeline are detailed afterwards.
 
 ```bash
-# Run supermapper (${name} references each of the samples in samples.txt)
-name="TX_234"
+# Run supermapper (${name} references each of the pools)
+name="B1"
 supermapper \
 	-i ${name}_1.fq.gz \
 	-j ${name}_2.fq.gz \
-	-r Psubis.fa \
+	-r Aarun.fa \
 	-c \
 	-t 16 \
-	-g "@RG\tID:${name}\tSM:${name}\tPL:illumina\tLB:run1" \
 	-o $name
 ```
 
-
-
 _clean the raw reads using fastp_
-
 ```bash
   # run Fastp
      # ${fwd} = forward reads file
@@ -118,78 +114,46 @@ _clean the raw reads using fastp_
 
 - _Parameters Explained:_
   - ***--in1/--in2*** :: input forward and reverse read files, recognizes gzip
-
   - ***--stdout*** :: write to standard out for piping
-
   - ***--adapter_fasta file*** :: a file of known Illumina adapters to trim
-
   - ***--cut_front*** :: enable a 5' sliding window trimmer, like trimmomatic
-
   - ***--cut_tail*** :: enable a 3' sliding window trimmer, like trimmomatic
-
   - ***--cut_window_size=4*** :: window size for the trimming
-
   - ***--cut_mean_quality=20*** :: mean base score across the window required, or else trim the last base
-
   - ***--qualified_quality_phred=20*** :: minimum base quality score to keep
-
   - ***--average_qual=20*** :: remove read of the average quality across all bases is < 20
-
   - ***--unqualified_percent_limit=30*** :: Percent of bases allowed to be less than q in a read
-
   - ***--n_base_limit=5*** :: if one read's number of N bases is >5, then this read pair is discarded
-
   - ***--length_required=50*** :: minimum read length to keep after trimming
-
   - ***--low_complexity_filter*** :: filter sequences with a low complexity
-
   - ***--complexity_threshold=30*** :: threshold for sequence complexity filter
-
   - ***--overrepresentation_analysis*** :: look for overrepresented sequences, like adapters
-
   - ***--trim_poly_x*** :: trim strings of homopolymers at the 3' end of reads
-
   - ***--poly_x_min_len 10*** :: minimum length of homopolymer ot trim
-
   - ***--json=${out}.json*** :: output file name, JSON format
-
   - ***--html=${out}.html*** :: output file name, HTML format
-
   - ***--report_title="$out"*** :: output report tile
-
   - ***--thread=${threads}***  :: number of cpus to use
 
-
-
 _mapping with bwa mem_
-
 ```bash
 # run bwa mem
    # ${threads} = # CPU threads to use
-   # Psubis.fa = indexed reference genome from above
+   # Aarun.fa = indexed reference genome from above
 bwa mem \
       -M \
       -p \
-      -R "$rg" \
       -t ${threads} \
-      Psubis.fa \
+      Aarun.fa \
       - | # read input piped from fastp; then output piped into samtools
 ```
 
 - _Parameters Explained:_
-
   - ***-M*** :: mark shorter split hits as secondary
-
   - ***-p*** :: smart pairing (ignoring in2.fq), in other words, data input are interleaved fastq
-
-  - ***-r*** :: read groups ID line, in other words, sample name
-
   - ***-t*** :: number of cpus to use
 
-
-
 _initial processing with samtools_
-
 ```bash
 # Process with samtools
    # ${threads} = # CPU threads to use
@@ -216,14 +180,11 @@ samtools sort \
 ```
 
 - _Parameters Explained:_
-  - `sort -n` :: sort BAM file numerically
-  - `fixmate -m` :: fixmates and add mate score tag
-  - `markdup` :: mark PCR/optical duplicates for later removal.
-
-
+  - ***sort -n*** :: sort BAM file numerically
+  - ***fixmate -m*** :: fixmates and add mate score tag
+  - ***markdup*** :: mark PCR/optical duplicates for later removal.
 
 _cleaning the BAM file_
-
 ```bash
 # Clean up the bam file
 samtools view \
@@ -240,21 +201,15 @@ samtools view \
 ```
 
 - _Parameters Explained:_
-
   - ***-b*** :: output BAM format
-
   - ***-h*** :: Include header in SAM output
-
   - ***-q*** :: remove reads with mapping quality < 20
   - ***-f 0x2*** :: keep reads mapped in proper pair
   - ***-F 0x4*** :: remove unmapped reads
   - ***-F 0x8*** :: remove read when its mate is unmapped
   - ***-F 0x400*** :: remove read when mate is mapped to the reverse strand, or not the primary alignment.
 
-
-
 _post-process BAM file_
-
 ```bash
 # Process BAM and get stats
    # ${threads} = # CPU threads to use
@@ -262,8 +217,6 @@ _post-process BAM file_
 samtools index -@ ${threads} ${out}.clean.sorted.bam
 samtools stats -@ ${threads} ${out}.clean.sorted.bam > ${out}.bamstats
 ```
-
-
 
 _summarize all output in `data.summary.csv`_
 
