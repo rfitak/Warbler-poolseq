@@ -1,8 +1,8 @@
 # Pool-seq Analysis with _Popoolation2_
 Now that all our pooled BAM files are prepared, we are ready to run the pool-seq analysis pipeline.  We used [popoolation2 v1.201](https://sourceforge.net/p/popoolation2/wiki/Main/) ([Kofler et al. 2011](https://doi.org/10.1093/bioinformatics/btr589)). For additional details, please see their review paper in *Nature Reviews Genetics* ([Schlötterer et al. 2014](https://doi.org/10.1093/bioinformatics/btr589)) or this useful tutorial by Joanna Griffiths in the ***MarineOmics*** group (https://marineomics.github.io/POP_03_poolseq.html).
 
-Below, the mandatory parameter `max-coverage` was calculated as 2.5X the mean coverage across pools.
--  (19.6 + 22.8 + 26 + 23) / 4 * 2.5 = 57.125 = 57
+Below, the mandatory parameter `max-coverage` was calculated as 2.5X the coverage per pool.
+-  19.2 | 22.3 | 25.5 | 22.6 x 2.5 = 48 | 56 | 64 | 57
 
 ```bash
 # Build the pileup of the 4 pools
@@ -28,7 +28,7 @@ perl popoolation2_1201/snp-frequency-diff.pl \
    --output-prefix pools \
    --min-count 2 \
    --min-coverage 5 \
-   --max-coverage 57
+   --max-coverage 48:56:64:57
 
 # Calculate pairwise Fst values
 perl popoolation2_1201/fst-sliding.pl \
@@ -36,7 +36,7 @@ perl popoolation2_1201/fst-sliding.pl \
    --output pools.fst \
    --min-count 2 \
    --min-coverage 5 \
-   --max-coverage 57 \
+   --max-coverage 48:56:64:57 \
    --min-covered-fraction 1 \
    --window-size 1 \
    --step-size 1 \
@@ -49,7 +49,7 @@ perl popoolation2_1201/fisher-test.pl \
    --output pools.fet \
    --min-count 2 \
    --min-coverage 5 \
-   --max-coverage 57 \
+   --max-coverage 48:56:64:57 \
    --min-covered-fraction 1 \
    --window-size 1 \
    --step-size 1 \
