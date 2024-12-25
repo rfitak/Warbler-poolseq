@@ -28,7 +28,7 @@ perl popoolation2_1201/snp-frequency-diff.pl \
    --output-prefix pools \
    --min-count 2 \
    --min-coverage 5 \
-   --max-coverage 48:56:64:57
+   --max-coverage 48,56,64,57
 
 # Calculate pairwise Fst values
 perl popoolation2_1201/fst-sliding.pl \
@@ -36,7 +36,7 @@ perl popoolation2_1201/fst-sliding.pl \
    --output pools.fst \
    --min-count 2 \
    --min-coverage 5 \
-   --max-coverage 48:56:64:57 \
+   --max-coverage 48,56,64,57 \
    --min-covered-fraction 1 \
    --window-size 1 \
    --step-size 1 \
@@ -49,7 +49,7 @@ perl popoolation2_1201/fisher-test.pl \
    --output pools.fet \
    --min-count 2 \
    --min-coverage 5 \
-   --max-coverage 48:56:64:57 \
+   --max-coverage 48,56,64,57 \
    --min-covered-fraction 1 \
    --window-size 1 \
    --step-size 1 \
