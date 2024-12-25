@@ -14,14 +14,17 @@
 <p align="center"><sup>Figure caption.</sup>
 </p>
 <br>
+
 ## Data
 All project, sample information, and raw sequencing data are publicly available and can be accessed through the NCBI BioProject database (accession [PRJNA995180](https://www.ncbi.nlm.nih.gov/bioproject/995180)).
-- NCBI BioProject accession [PRJNA995180]([https://www.ncbi.nlm.nih.gov/bioproject/995180])
-- NCBI BioSample accession [SAMN09873042](https://www.ncbi.nlm.nih.gov/biosample/SAMN09873042)
-- NCBI Sequence Read Archive (SRA)
-  1.  Short-insert, paired end reads: SRR7973879
-  2.  Long-insert, Mate-pair library (5-7 kb insert size): SRR7973880
-  3.  Long-insert, Mate-pair library (10-12 kb insert size): SRR7973881
+
+| Pool | Abbreviation | BioSample Accession | SRA Accession(s) |
+| --- | ---| --- | --- |
+| Early Spring | B1 | [SAMN37026500](https://www.ncbi.nlm.nih.gov/biosample/37026500) | [SRR25778514](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR25778514) |
+| Late Spring | B2 | [SAMN37026501](https://www.ncbi.nlm.nih.gov/biosample/37026501) | [SRR25778513](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR25778513) |
+| Early Autumn | C1 | [SAMN40709721](https://www.ncbi.nlm.nih.gov/biosample/40709721) | [SRR28726269](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR28726269) |
+| Late Autumn | C2 | [SAMN40709722](https://www.ncbi.nlm.nih.gov/biosample/40709722) | [SRR28726268](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR28726268) |
+
 
 ***
 ___This GitHub repository contains a summary of the various code, software, and data analysis pipelines used for the aforementioned study of the great reed warbler. The contents represented here are only to be used as an example and not intended to be comeprehensive. The authors make no representation about the suitability or accuracy of this code, software, or data for any purpose, and make no warranties, either expressed or implied, for a particular purpose or that the use of this software or data will not infringe any third party patents, copyrights, trademarks, or other rights. The code, software and data are provided "as is". All content is hereby registered under the GNU General Public License v3.0, see [LICENSE](./LICENSE). Any publication that significantly relies upon the use of the content generated herein shall appropriately cite:___
