@@ -42,9 +42,9 @@ grenedalf \
         --filter-sample-max-read-depth 56 \
         --filter-total-only-biallelic-snps \
         --window-type interval \
-        --window-interval-width 25000 \
-        --window-interval-stride 25000 \
-        --window-average-policy valid-loci \
+        --window-interval-width 1 \
+        --window-interval-stride 1 \
+        --window-average-policy window-length \
         --method unbiased-nei \
         --pool-sizes 18 \
         --file-prefix grenedalf. \
