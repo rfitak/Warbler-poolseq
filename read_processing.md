@@ -136,10 +136,10 @@ _clean the raw reads using fastp_
   - ***--thread=${threads}***  :: number of cpus to use
 
 The output summary files from the read cleaning using _fastp_ can be found here (download and open the .html files in a web broser):
-- [Pool B1: Early Spring](./data/B1.html)
-- [Pool B2: Late Spring](./data/B2.html)
-- [Pool C1: Early Autumn](./data/C1.html)
-- [Pool C2: Late Autumn](./data/C2.html)
+- html: [Pool B1: Early Spring](./data/B1.html) or as PDF [Pool B1: Early Spring](./data/B1.pdf)
+- html: [Pool B2: Late Spring](./data/B2.html) or as PDF [Pool B2: Late Spring](./data/B2.pdf)
+- html: [Pool C1: Early Autumn](./data/C1.html) or as PDF [Pool C1: Early Autumn](./data/C1.pdf)
+- html: [Pool C2: Late Autumn](./data/C2.html) or as PDF [Pool C2: Late Autumn](./data/C2.pdf)
 
 _mapping with bwa mem_
 ```bash
