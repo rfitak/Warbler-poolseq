@@ -18,7 +18,7 @@
 ## Data
 All project, sample information, and raw sequencing data are publicly available and can be accessed through the NCBI BioProject database (accession [PRJNA995180](https://www.ncbi.nlm.nih.gov/bioproject/995180)).
 
-| Pool | Abbreviation | BioSample Accession | SRA Accession(s) |
+| Pool | Abbreviation | BioSample Accession | SRA Accession |
 | --- | ---| --- | --- |
 | Early Spring | B1 | [SAMN37026500](https://www.ncbi.nlm.nih.gov/biosample/37026500) | [SRR25778514](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR25778514) |
 | Late Spring | B2 | [SAMN37026501](https://www.ncbi.nlm.nih.gov/biosample/37026501) | [SRR25778513](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR25778513) |
