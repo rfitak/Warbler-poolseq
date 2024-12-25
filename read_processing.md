@@ -135,7 +135,7 @@ _clean the raw reads using fastp_
   - ***--report_title="$out"*** :: output report tile
   - ***--thread=${threads}***  :: number of cpus to use
 
-The output summary files from the read cleaning using _fastp_ can be found here:
+The output summary files from the read cleaning using _fastp_ can be found here (download and open the .html files in a web broser):
 - [Pool B1: Early Spring](./data/B1.html)
 - [Pool B2: Late Spring](./data/B2.html)
 - [Pool C1: Early Autumn](./data/C1.html)
