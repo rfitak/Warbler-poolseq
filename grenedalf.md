@@ -88,7 +88,7 @@ _Parameters Explained:_
   - `kofler` the statistic by Kofler et al of PoPoolation2
   - `karlsson` the asymptotically unbiased estimator of Karlsson et al (which is also implemented in *PoPoolation2*)
   - All except for the Karlsson method also require `--pool-sizes` to be provided.
-- ***--pool-sizes pool.sizes*** :: Pool sizes for all samples that are used (not filtered out). These are the number of haploids, so 100 diploid individuals correspond to a pool size of 200. Either:
+- ***--pool-sizes 18*** :: Pool sizes for all samples that are used (not filtered out). These are the number of haploids, so 100 diploid individuals correspond to a pool size of 200. Either:
   - a single pool size that is used for all samples, specified on the command line, or
   - a path to a file that contains a comma- or tab-separated list of sample names and pool sizes, with one name/size pair per line, in any order of lines.
 - **--file-prefix grenedalf.**. :: File prefix for output files
