@@ -15,7 +15,7 @@
 </p>
 <br>
 
-## Data
+## Raw Data
 All project, sample information, and raw sequencing data are publicly available and can be accessed through the NCBI BioProject database (accession [PRJNA995180](https://www.ncbi.nlm.nih.gov/bioproject/995180)).
 
 | Pool | Abbreviation | BioSample Accession | SRA Accession |
