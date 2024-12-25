@@ -134,6 +134,7 @@ _clean the raw reads using fastp_
   - ***--html=${out}.html*** :: output file name, HTML format
   - ***--report_title="$out"*** :: output report tile
   - ***--thread=${threads}***  :: number of cpus to use
+
 The output summary files from the read cleaning using _fastp_ can be found here:
 - [Pool B1: Early Spring](./data/B1.html)
 - [Pool B2: Late Spring](./data/B2.html)
