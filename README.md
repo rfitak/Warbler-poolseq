@@ -31,7 +31,7 @@ ___This GitHub repository contains a summary of the various code, software, and 
 
 [Pool-seq analysis: <i>Popoolation2</i>](./popoolation2.md)
 
-[Pool-seq analysis: <i>genedalf</i>](./grenedalf.md)
+[Pool-seq analysis: <i>grenedalf</i>](./grenedalf.md)
 
 [Window analysis: <i>GenWin</i>](./windows.md)
 
