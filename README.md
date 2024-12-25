@@ -61,3 +61,6 @@ ___This GitHub repository contains a summary of the various code, software, and 
 | BWA | 0.7.17 | [Li and Durbin (2009). Fast and accurate short read alignment with Burrows–Wheeler transform. Bioinformatics 25, 1754–1760.](https://doi.org/10.1093/bioinformatics/btp324) |
 | POPOOLATION2 | 1.201 | [Kofler et al. (2011). PoPoolation2: identifying differentiation between populations using sequencing of pooled DNA samples (Pool-Seq). Bioinformatics 27, 3435–3436.](https://doi.org/10.1093/bioinformatics/btr589) |
 | GRENEDALF | 0.6.2 | [Czech et al. (2024). grenedalf: population genetic statistics for the next generation of pool sequencing. Bioinformatics 40, btae508.](https://doi.org/10.1093/bioinformatics/btae508) |
+| GENWIN | 1.0 | [Beissinger et al. (2015). Defining window-boundaries for genomic analyses using smoothing spline techniques. Genetics Selection Evolution 47, 30.](https://doi.org/10.1186/s12711-015-0105-9) |
+| Bedtools | 2.27.1 | [Quinlan and Hall (2010)., BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics 26, 841–842.](https://doi.org/10.1093/bioinformatics/btq033) |
+
