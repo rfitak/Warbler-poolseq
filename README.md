@@ -51,3 +51,4 @@ ___This GitHub repository contains a summary of the various code, software, and 
 | SAMTOOLS | 1.18 | [Li, H. et al. (2009). The Sequence Alignment/Map format and SAMtools. Bioinformatics 25, 2078-2079.](https://doi.org/10.1093/bioinformatics/btp352) |
 | BWA | 0.7.17 | [Li and Durbin (2009). Fast and accurate short read alignment with Burrows–Wheeler transform. Bioinformatics 25, 1754–1760.](https://doi.org/10.1093/bioinformatics/btp324) |
 | POPOOLATION2 | 1.201 | [Kofler et al. (2011). PoPoolation2: identifying differentiation between populations using sequencing of pooled DNA samples (Pool-Seq). Bioinformatics 27, 3435–3436.](https://doi.org/10.1093/bioinformatics/btr589) |
+| GRENEDALF | 0.6.2 | [Czech et al. (2024). grenedalf: population genetic statistics for the next generation of pool sequencing. Bioinformatics 40, btae508.](https://doi.org/10.1093/bioinformatics/btae508) |
