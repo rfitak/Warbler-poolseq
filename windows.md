@@ -4,7 +4,7 @@ We used the R package [_GenWin_](https://cran.r-project.org/web/packages/GenWin)
 
 When using GenWin, we noticed there is a bug/issue in the current version v1.0.  If the `splineAnalyze` function only detects one inflection point (i.e. two windows), it throws an error.  I fixed this issue in the source code and created a new version: [GenWin v1.1](./data/GenWin_1.1.tar.gz).
 
-_R code to run GenWin on each chromosome and append to the output file `genwin.out.csv`_
+_R code to run GenWin on each scaffold and append to the output file `genwin.out.csv`_
 
 ```R
 # Load Library (v1.1)
