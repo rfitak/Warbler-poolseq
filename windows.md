@@ -25,5 +25,11 @@ win <- splineAnalyze(Y = tmp$B1.clean.sorted.B2.clean.sorted.fst,
    method = 4)
 
 
- write.table(win$windowData, file = "delete.R.csv", append = T, quote = F, sep = ",", row.names = F, col.names = T)
+ write.table(win$windowData,
+   file = "delete.R.csv",
+   append = T,
+   quote = F,
+   sep = ",",
+   row.names = F,
+   col.names = !file.exists("delete.R.csv"))
 ```
