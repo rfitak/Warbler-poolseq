@@ -10,7 +10,7 @@ _R code to run GenWin on each scaffold and append to the output file `genwin.out
 # Load Library (v1.1)
 library(GenWin)
 
-# Read in PoPoolation Fst
+# Read in PoPoolation Fst file
 data <- read.table("pools.fst", header = F, sep = "\t")[,c(1,2,6)]
    #14,439,829 sites
 
@@ -24,7 +24,7 @@ scaffolds <- unique(data$chrom)
 
 # Run GenWin by scaffold
 for (i in 1:length(scaffolds)){
-   tmp <- subset(data2, chrom  == scaffolds[i])
+   tmp <- subset(data, chrom  == scaffolds[i])
 
    # This "if" statement avoids an error in the # of SNPs
    # The # SNPs must be >2*N+1 (N = 2, or the order of the polynomial in smooth.pspline)
