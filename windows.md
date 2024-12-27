@@ -38,7 +38,9 @@ for (i in 1:length(scaffolds)){
                           plotWindows = FALSE,
                           method = 4)
 	   } else if (diff(range(tmp$start)) < 100) {
-		   win <- splineAnalyze(Y = tmp$B1.clean.sorted.B2.clean.sorted.fst,
+              # This statement is to resolve an error when the SNPs on the scaffold
+              # cover a region less than the smoothness parameter (100 bp)
+                   win <- splineAnalyze(Y = tmp$B1.clean.sorted.B2.clean.sorted.fst,
 			  map = tmp$start,
 			  smoothness = diff(range(tmp$start)),
 			  plotRaw = FALSE,
