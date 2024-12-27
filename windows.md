@@ -11,11 +11,13 @@ _R code to run GenWin on each scaffold and append to the output file `genwin.out
 library(GenWin)
 
 # Read in grenedalf Fst
-data <- read.csv("grenedalf.fst.csv", header = T)
-   #14,491,335 sites
+data <- read.table("pools.fst", header = F, sep = "\t")[,c(1,2,6)]
+   #xx,xxx,xxx sites
 
 # Trim to just B1 vs B2 Fst without nan
-data2 <- subset(data, !is.na(B1.clean.sorted.B2.clean.sorted.fst))
+data2[, 3] <- gsub("1:2=", "", data2[, 3])
+data2 <- data2[,c(1,2,6)]
+#data2 <- subset(data, !is.na(B1.clean.sorted.B2.clean.sorted.fst))
 
 # Get full list of scaffolds
 scaffolds <- unique(data$chrom)
