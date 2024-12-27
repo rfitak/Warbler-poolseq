@@ -10,7 +10,7 @@ _R code to run GenWin on each scaffold and append to the output file `genwin.out
 # Load Library (v1.1)
 library(GenWin)
 
-# Read in grenedalf Fst
+# Read in PoPoolation Fst
 data <- read.table("pools.fst", header = F, sep = "\t")[,c(1,2,6)]
    #14,439,829 sites
 
