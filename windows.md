@@ -12,11 +12,10 @@ library(GenWin)
 
 # Read in grenedalf Fst
 data <- read.table("pools.fst", header = F, sep = "\t")[,c(1,2,6)]
-   #xx,xxx,xxx sites
+   #14,439,829 sites
 
 # Trim to just B1 vs B2 Fst without nan
-data2[, 3] <- gsub("1:2=", "", data2[, 3])
-data2 <- data2[,c(1,2,6)]
+data[, 3] <- as.numeric(gsub("1:2=", "", data[, 3]))
 #data2 <- subset(data, !is.na(B1.clean.sorted.B2.clean.sorted.fst))
 
 # Get full list of scaffolds
