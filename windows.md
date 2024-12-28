@@ -61,8 +61,9 @@ _Summary stats of the windows_
 ```R
 # Load in window output
 windows <- read.csv("genwin.out.csv", header = T)
+   #1,202,291 windows
 windows <- subset(windows, MeanY != "NA")
-   #xxxx
+   #1,156,611 windows
 windows$lengths <- windows$WindowStop - windows$WindowStart + 1
 
 # Build Plots
@@ -70,7 +71,9 @@ library(ggplot2)
 library(patchwork)
 p1 <- ggplot(windows, aes(x = lengths)) + geom_histogram() + scale_x_continuous(trans='log10')
 p2 <- ggplot(windows, aes(x = SNPcount)) + geom_histogram() + scale_x_continuous(trans='log10')
+pdf(file = "windows.hist.pdf", width = 16, height = 10)
 p1 + p2
+dev.off()
 ```
 
 
