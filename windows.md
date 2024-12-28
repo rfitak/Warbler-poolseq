@@ -76,7 +76,7 @@ p1 + p2
 dev.off()
 ```
 <p align="center">
-![Histograms](./figures/windows.hist.png)
+<img src="figures/windows.hist.png" alt="title" width="500">
 <sup> Histograms of the window lengths inferred from _GenWin_ (left) and the number of SNPs per window (right).</sup>
 </p>
 
