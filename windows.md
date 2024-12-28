@@ -56,7 +56,7 @@ for (i in 1:length(scaffolds)){
    }
 }
 ```
-Using the above script, we were able to identify XXXX _de novo_ windows.
+Using the above script, we were able to identify 1,156,611 _de novo_ windows.
 _Summary stats of the windows_
 ```R
 # Load in window output
