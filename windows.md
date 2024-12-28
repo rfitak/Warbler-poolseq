@@ -77,10 +77,13 @@ png(file = "windows.hist.pdf", width = 16, height = 10)
 p1 + p2
 dev.off()
 ```
+<div align="center">
+	
 | Metric | Min | Mean (SD) | Max |
 | --- | --- | --- | --- |
 | Window Length | 1 | 977.6 (3057.6) | 299,828 |
 | SNP Count | 1 | 12.4 (19.5) | 1,670 |
+</div>
 
 <p align="center">
   <img src="figures/windows.hist.png" alt="Histograms" width="750">
