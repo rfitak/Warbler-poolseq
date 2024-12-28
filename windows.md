@@ -75,10 +75,10 @@ png(file = "windows.hist.pdf", width = 16, height = 10)
 p1 + p2
 dev.off()
 ```
-<div align = "center">
+<p align="center">
 ![Histograms](./figures/windows.hist.png)
 <sup> Histograms of the window lengths inferred from _GenWin_ (left) and the number of SNPs per window (right).</sup>
-</div>
+</p>
 
 ### Step 2: Find Outlier Windows with Signifcant SNPs
 _
