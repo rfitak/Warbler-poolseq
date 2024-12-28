@@ -31,7 +31,7 @@ for (i in 1:length(scaffolds)){
    # This "if" statement avoids an error in the # of SNPs
    # The # SNPs must be >2*N+1 (N = 2, or the order of the polynomial in smooth.pspline)
    if (nrow(tmp) <= 5){
-      message(paste0("Skipped scaffold ", i, " which had only ", nrow(tmp), " SNPs."))
+      message(paste0("Skipped scaffold ", scaffolds[i], " which had only ", nrow(tmp), " SNPs."))
    } else {
 	   if (diff(range(tmp$Pos)) >= 100){
 		   win <- splineAnalyze(Y = tmp$Fst,
@@ -52,7 +52,7 @@ for (i in 1:length(scaffolds)){
            }
 	   win <- cbind(Chrom = rep(scaffolds[i], nrow(win$windowData)), win$windowData)
 	   write.table(win, file = "genwin.out.csv", append = T, quote = F, sep = ",", row.names = F, col.names = !file.exists("genwin.out.csv"))
-	   message(paste0("Finished scaffold ", i))
+	   message(paste0("Finished scaffold ", scaffolds[i]))
    }
 }
 ```
