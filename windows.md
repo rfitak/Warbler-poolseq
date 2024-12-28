@@ -96,6 +96,35 @@ dev.off()
 </p>
 
 ### Step 2: Find Outlier Windows with Signifcant SNPs
-_
+We defined outlier windows based on two criteria:
+1. Top 1% of F<sub>ST</sub> values (F<sub>ST</sub> ≥ 0.1733967)
+2. Containing at least two significant SNPs
+   - as defined with the Fisher's exact test using a false discovery rate (FDR) < 0.01
+These are overall very conservative criteria, and consistent with previous studies using poolseq (e.g. [Sly et al. 2022](https://doi.org/10.1073/pnas.2120482119))
+
+_Identify the outlier windows matching the two criteria above_
 ```R
+# Load in window output
+windows <- read.csv("windows.fst.csv", header = T)
+   #1,156,611 windows
+
+# Get percentiles
+p <- quantile(windows$MeanY, c(0.95, 0.975, 0.99))
+#       95%     97.5%       99% 
+# 0.1129424 0.1370687 0.1733967 
+
+# Filter for just the outlier windows
+outliers <- subset(windows, MeanY >= p[3])
+
+# Load in Fisher exact test data
+SNPs <- read.table("pools.fet", sep = "\t", header = F)[,c(1,2,6)]
+colnames(SNPs) <- c("Chrom", "Pos", "Q")
+   #14,439,829 sites
+
+# Calculate FDR and filter for significant SNPs
+SNPs$Q <- as.numeric(gsub("1:2=", "", SNPs$Q))
+SNPs$P <- 10^(-SNPs$Q) # convert Q value from Popoolation2 to P value
+SNPs$FDR <- p.adjust(SNPs$P, method = "fdr") # FDR corrected P-values
+SNPs.sig <- subset(SNPs, FDR < 0.01)
+   # 1,890 SNPs
 ```
