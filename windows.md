@@ -108,12 +108,12 @@ _Identify the outlier windows matching the two criteria above_
 windows <- read.csv("windows.fst.csv", header = T)
    #1,156,611 windows
 
-# Get percentiles
+# Get percentiles (top 5%, 2.5%, 1%)
 p <- quantile(windows$MeanY, c(0.95, 0.975, 0.99))
 #       95%     97.5%       99% 
 # 0.1129424 0.1370687 0.1733967 
 
-# Filter for just the outlier windows
+# Filter for just the top 1% outlier windows
 outliers <- subset(windows, MeanY >= p[3])
 
 # Load in Fisher exact test data
