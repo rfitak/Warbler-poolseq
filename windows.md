@@ -4,6 +4,7 @@ We used the R package [_GenWin_](https://cran.r-project.org/web/packages/GenWin)
 
 When using GenWin, we noticed there is a bug/issue in the current version v1.0.  If the `splineAnalyze` function only detects one inflection point (i.e. two windows), it throws an error.  I fixed this issue in the source code and created a new version: [GenWin v1.1](./data/GenWin_1.1.tar.gz).
 
+### Step 1: Generate the windows
 _R code to run GenWin on each scaffold and append to the output file `genwin.out.csv`_
 
 ```R
@@ -54,4 +55,26 @@ for (i in 1:length(scaffolds)){
 	   message(paste0("Finished scaffold ", i))
    }
 }
+```
+Using the above script, we were able to identify XXXX _de novo_ windows.
+_Summary stats of the windows_
+```R
+# Load in window output
+windows <- read.csv("genwin.out.csv", header = T)
+windows <- subset(windows, MeanY != "NA")
+   #xxxx
+windows$lengths <- windows$WindowStop - windows$WindowStart + 1
+
+# Build Plots
+library(ggplot2)
+library(patchwork)
+p1 <- ggplot(windows, aes(x = lengths)) + geom_histogram() + scale_x_continuous(trans='log10')
+p2 <- ggplot(windows, aes(x = SNPcount)) + geom_histogram() + scale_x_continuous(trans='log10')
+p1 + p2
+```
+
+
+### Step 2: Find Outlier Windows with Signifcant SNPs
+_
+```R
 ```
