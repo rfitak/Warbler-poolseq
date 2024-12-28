@@ -76,8 +76,8 @@ p1 + p2
 dev.off()
 ```
 <p align="center">
-<img src="figures/windows.hist.png" alt="title" width="500">
-<sup> Histograms of the window lengths inferred from _GenWin_ (left) and the number of SNPs per window (right).</sup>
+<img src="figures/windows.hist.png" alt="Histograms" width="500">
+<sup>Histograms of the window lengths inferred from _GenWin_ (left) and the number of SNPs per window (right).</sup>
 </p>
 
 ### Step 2: Find Outlier Windows with Signifcant SNPs
