@@ -12,38 +12,39 @@ library(GenWin)
 
 # Read in PoPoolation Fst file
 data <- read.table("pools.fst", header = F, sep = "\t")[,c(1,2,6)]
+colnames(data) <- c("Chrom", "Pos", "Fst")
    #14,439,829 sites
 
 # Trim to just B1 vs B2 Fst without nan
-data[, 3] <- as.numeric(gsub("1:2=", "", data[, 3]))
+data$Fst <- as.numeric(gsub("1:2=", "", data$Fst))
 #data2 <- subset(data, !is.na(B1.clean.sorted.B2.clean.sorted.fst))
 
 # Get full list of scaffolds
-scaffolds <- unique(data$V1)
+scaffolds <- unique(data$Chrom)
    #29,163 scaffolds in list
 
 # Run GenWin by scaffold
 for (i in 1:length(scaffolds)){
-   tmp <- subset(data, chrom  == scaffolds[i])
+   tmp <- subset(data, Chrom == scaffolds[i])
 
    # This "if" statement avoids an error in the # of SNPs
    # The # SNPs must be >2*N+1 (N = 2, or the order of the polynomial in smooth.pspline)
    if (nrow(tmp) <= 5){
       message(paste0("Skipped scaffold ", i, " which had only ", nrow(tmp), " SNPs."))
    } else {
-	   if (diff(range(tmp$start)) >= 100){
-		   win <- splineAnalyze(Y = tmp$B1.clean.sorted.B2.clean.sorted.fst,
-                          map = tmp$start,
+	   if (diff(range(tmp$Pos)) >= 100){
+		   win <- splineAnalyze(Y = tmp$Fst,
+                          map = tmp$Pos,
                           smoothness = 100,
                           plotRaw = FALSE,
                           plotWindows = FALSE,
                           method = 4)
-	   } else if (diff(range(tmp$start)) < 100) {
+	   } else if (diff(range(tmp$Pos)) < 100) {
               # This statement is to resolve an error when the SNPs on the scaffold
               # cover a region less than the smoothness parameter (100 bp)
-                   win <- splineAnalyze(Y = tmp$B1.clean.sorted.B2.clean.sorted.fst,
-			  map = tmp$start,
-			  smoothness = diff(range(tmp$start)),
+                   win <- splineAnalyze(Y = tmp$Fst,
+			  map = tmp$Pos,
+			  smoothness = diff(range(tmp$Pos)),
 			  plotRaw = FALSE,
 			  plotWindows = FALSE,
 			  method = 4)
