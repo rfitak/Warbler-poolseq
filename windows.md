@@ -114,7 +114,7 @@ p <- quantile(windows$MeanY, c(0.95, 0.975, 0.99))
 # 0.1129424 0.1370687 0.1733967 
 
 # Filter for just the top 1% outlier windows
-outliers <- subset(windows, MeanY >= p[3])
+top1.win <- subset(windows, MeanY >= p[3])
 
 # Load in Fisher exact test data
 SNPs <- read.table("pools.fet", sep = "\t", header = F)[,c(1,2,6)]
