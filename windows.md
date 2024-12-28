@@ -127,4 +127,21 @@ SNPs$P <- 10^(-SNPs$Q) # convert Q value from Popoolation2 to P value
 SNPs$FDR <- p.adjust(SNPs$P, method = "fdr") # FDR corrected P-values
 SNPs.sig <- subset(SNPs, FDR < 0.01)
    # 1,890 SNPs
+
+# Setup emtpy objects to store results
+outliers <- data.frame()
+count <- vector()
+
+# Find the count of significant SNPs in each top 1% window
+for (i in 1:nrow(top1.win)){
+   tmp <- SNPs.sig[which(
+      (SNPs.sig$Chrom == top1.win$Chrom[i]) &
+      (SNPs.sig$Pos <= top1.win$WindowStop[i]) &
+      (SNPs.sig$Pos > top1.win$WindowStart[i])),]
+   count <- c(count, nrow(tmp))
+   if (nrow(tmp) >= 2){
+      outliers <- rbind(outliers, top1.win[i,])
+   }
+message(paste0("Finished window ", i))
+}
 ```
