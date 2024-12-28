@@ -19,7 +19,7 @@ data[, 3] <- as.numeric(gsub("1:2=", "", data[, 3]))
 #data2 <- subset(data, !is.na(B1.clean.sorted.B2.clean.sorted.fst))
 
 # Get full list of scaffolds
-scaffolds <- unique(data$chrom)
+scaffolds <- unique(data$V1)
    #29,163 scaffolds in list
 
 # Run GenWin by scaffold
