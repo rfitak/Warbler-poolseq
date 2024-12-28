@@ -68,6 +68,9 @@ windows$lengths <- windows$WindowStop - windows$WindowStart + 1
 summary(windows$lengths); sd(windows$lengths)
 summary(windows$lengths); sd(windows$lengths)
 
+# Save output
+write.table(windows, file = "windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
+
 # Build Plots
 library(ggplot2)
 library(patchwork)
