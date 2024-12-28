@@ -71,11 +71,11 @@ library(ggplot2)
 library(patchwork)
 p1 <- ggplot(windows, aes(x = lengths)) + geom_histogram() + scale_x_continuous(trans='log10')
 p2 <- ggplot(windows, aes(x = SNPcount)) + geom_histogram() + scale_x_continuous(trans='log10')
-pdf(file = "windows.hist.pdf", width = 16, height = 10)
+png(file = "windows.hist.pdf", width = 16, height = 10)
 p1 + p2
 dev.off()
 ```
-![Histograms](./figures/windows.hist.pdf)
+![Histograms](./figures/windows.hist.png)
 <sup> Histograms of the window lengths inferred from _GenWin_ (left) and the number of SNPs per window (right).</sup>
 
 ### Step 2: Find Outlier Windows with Signifcant SNPs
