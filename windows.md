@@ -22,7 +22,7 @@ data$Fst <- as.numeric(gsub("1:2=", "", data$Fst))
 
 # Get full list of scaffolds
 scaffolds <- unique(data$Chrom)
-   #29,163 scaffolds in list
+   #28,878 scaffolds in list
 
 # Run GenWin by scaffold
 for (i in 1:length(scaffolds)){
