@@ -159,3 +159,18 @@ length(count[count > 2])
 # Save output table
 write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
 ```
+
+### Step 3: Find Find overlapping genes
+The last step of this section is to find the protein-coding genes annotated in or nearby these outlier windows. First, we downloaded the reference genome annotation file.
+
+```bash
+# Download the reference genome from NCBI's FTP site
+wget \
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/013/398/685/GCA_013398685.1_ASM1339868v1/GCA_013398685.1_ASM1339868v1_genomic.gff.gz
+
+# Uncompress the file and change its name
+gunzip GCA_013398685.1_ASM1339868v1_genomic.gff.gz
+mv GCA_013398685.1_ASM1339868v1_genomic.gff Aarun.fa
+
+
+```
