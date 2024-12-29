@@ -190,5 +190,28 @@ grep -v "^#" Aarun.genes.gff | \
 In total, there are 15,576 annotated genes, but 1,878 were pseudogenes, resulting in 13,698 protein-coding genes. Next, we prepared the outlier windows containing ≥2 significant SNPs in bed format, and added 25 kb flanking region to each window. This flanking region is consistent with that of [Sly et al. 2022](https://doi.org/10.1073/pnas.2120482119). Last, we had to collapse the windows since some of them overlapped, and we didn't want to artificially return the same genes multiple times. All window-based analyses were perofrmed using [BEDtools v2.27.1](https://doi.org/10.1093/bioinformatics/btq033).
 
 ```bash
-xxxx
+# Make genome file needed for BEDtools
+samtools faidx Aarun.fa -o Aarun.genome
+
+# In one big command, add window slop, merge, then intersect with genes
+bedtools intersect \
+   -wa \
+   -a Aarun.genes.gff \
+   -b <(bedtools merge \
+      -i <(bedtools slop \
+         -b 25000 \
+         -i <(sed '1d' outlier-windows.fst.csv | tr "," "\t" | cut -f1-3) \
+         -g Aarun.genome)) > outlier-genes.gff 
+# 93 outlier genes
+
+# A simple list of the 93 gene IDs
+perl -ne \
+   '/ID=gene-(ACRARU_[^;]+);/; print "$1\n"' \
+   outlier-genes.gff > outlier-genes.list
 ```
+
+In summary, the resulting output produced 229 windows containing ≥2 signifcant SNPs, and 93 genes overlapped with 25kb of these windows.  The total combined length of all 229 outlier windows was 479,959 bp.  Some of the output files are provided below:
+- [windows.fst.csv](./data/windows.fst.csv) :: all 1,156,611 windows inferred by GenWin (excluding "NA" windows).
+- [outlier-windows.fst.csv](./data/outlier-windows.fst.csv) :: just the 229 outlier windows (containing ≥2 signifcant SNPs)
+- [outlier-genes.gff](./data/outlier-genes.gff) :: gff file of the 93 genes in the outlier windows
+- [outlier-genes.list](./data/outlier-genes.list) :: simple list of the 93 gene IDs
