@@ -140,8 +140,19 @@ for (i in 1:nrow(top1.win)){
       (SNPs.sig$Pos > top1.win$WindowStart[i])),]
    count <- c(count, nrow(tmp))
    if (nrow(tmp) >= 2){
-      outliers <- rbind(outliers, top1.win[i,])
+      outliers <- rbind(outliers, cbind(top1.win[i,], SigSNPs = nrow(tmp)))
    }
 message(paste0("Finished window ", i))
 }
+
+# a total of 141 windows overlapped
+sum(count) # 665 SNPs overlapped the outlier windows.
+length(count[count == 0])
+# [1] 11155
+length(count[count == 1])
+# [1] 271
+length(count[count == 2])
+# [1] 90
+length(count[count > 2])
+# [1] 51
 ```
