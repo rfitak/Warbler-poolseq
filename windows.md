@@ -211,7 +211,7 @@ perl -ne \
 ```
 
 In summary, the resulting output produced 229 windows containing ≥2 signifcant SNPs, and 93 genes overlapped with 25kb of these windows.  The total combined length of all 229 outlier windows was 479,959 bp.  Some of the output files are provided below:
-- [windows.fst.csv](./data/windows.fst.csv) :: all 1,156,611 windows inferred by GenWin (excluding "NA" windows).
+- [windows.fst.csv (gzipped)](./data/windows.fst.csv.gz) :: all 1,156,611 windows inferred by GenWin (excluding "NA" windows).
 - [outlier-windows.fst.csv](./data/outlier-windows.fst.csv) :: just the 229 outlier windows (containing ≥2 signifcant SNPs)
 - [outlier-genes.gff](./data/outlier-genes.gff) :: gff file of the 93 genes in the outlier windows
 - [outlier-genes.list](./data/outlier-genes.list) :: simple list of the 93 gene IDs
