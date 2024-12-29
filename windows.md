@@ -96,11 +96,9 @@ dev.off()
 </p>
 
 ### Step 2: Find Outlier Windows with Signifcant SNPs
-We defined outlier windows based on two criteria:
-1. Top 1% of F<sub>ST</sub> values (F<sub>ST</sub> ≥ 0.1733967)
-2. Containing at least two significant SNPs
+We defined windows based on the F<sub>ST</sub> results. However, to find the outlier windows we then selected the windows containing at least two significant SNPs
    - as defined with the Fisher's exact test using a false discovery rate (FDR) < 0.01
-These are overall very conservative criteria, and consistent with previous studies using poolseq (e.g. [Sly et al. 2022](https://doi.org/10.1073/pnas.2120482119))
+These criteria are consistent with previous studies using poolseq (e.g. [Sly et al. 2022](https://doi.org/10.1073/pnas.2120482119))
 
 _Identify the outlier windows matching the two criteria above_
 ```R
@@ -108,13 +106,19 @@ _Identify the outlier windows matching the two criteria above_
 windows <- read.csv("windows.fst.csv", header = T)
    #1,156,611 windows
 
+##############################################################
+###### Ignore this section, this is to save unused code ######
+##############################################################
 # Get percentiles (top 5%, 2.5%, 1%)
-p <- quantile(windows$MeanY, c(0.95, 0.975, 0.99))
+# p <- quantile(windows$MeanY, c(0.95, 0.975, 0.99))
 #       95%     97.5%       99% 
 # 0.1129424 0.1370687 0.1733967 
 
 # Filter for just the top 1% outlier windows
-top1.win <- subset(windows, MeanY >= p[3])
+# top1.win <- subset(windows, MeanY >= p[3])
+##############################################################
+################## End of section to ignore ##################
+##############################################################
 
 # Load in Fisher exact test data
 SNPs <- read.table("pools.fet", sep = "\t", header = F)[,c(1,2,6)]
@@ -133,28 +137,30 @@ outliers <- data.frame()
 count <- vector()
 
 # Find the count of significant SNPs in each top 1% window
-for (i in 1:nrow(top1.win)){
+for (i in 1:nrow(windows)){
    tmp <- SNPs.sig[which(
-      (SNPs.sig$Chrom == top1.win$Chrom[i]) &
-      (SNPs.sig$Pos <= top1.win$WindowStop[i]) &
-      (SNPs.sig$Pos > top1.win$WindowStart[i])),]
+      (SNPs.sig$Chrom == windows$Chrom[i]) &
+      (SNPs.sig$Pos <= windows$WindowStop[i]) &
+      (SNPs.sig$Pos > windows$WindowStart[i])),]
    count <- c(count, nrow(tmp))
    if (nrow(tmp) >= 2){
-      outliers <- rbind(outliers, cbind(top1.win[i,], SigSNPs = nrow(tmp)))
+      outliers <- rbind(outliers, cbind(windows[i,], SigSNPs = nrow(tmp)))
    }
 message(paste0("Finished window ", i))
 }
 
-# a total of 141 windows overlapped
-sum(count) # 665 SNPs overlapped the outlier windows.
+# a total of 229 windows contained ≥ 2 significant SNPs
+sum(count) # 1,890 SNPs overlapped the outlier windows.
+sum(outliers$lengths)
+   # [1] 479959
 length(count[count == 0])
-# [1] 11155
+   # [1] 1155083
 length(count[count == 1])
-# [1] 271
+   # [1] 1299
 length(count[count == 2])
-# [1] 90
+   # [1] 160
 length(count[count > 2])
-# [1] 51
+   # [1] 69
 
 # Save output table
 write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
