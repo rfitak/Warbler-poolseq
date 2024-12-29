@@ -155,4 +155,7 @@ length(count[count == 2])
 # [1] 90
 length(count[count > 2])
 # [1] 51
+
+# Save output table
+write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
 ```
