@@ -46,6 +46,8 @@ ___This GitHub repository contains a summary of the various code, software, and 
 
 [Enrichment analysis](./enrichment.md)
 
+[Genetic Effect by Season](./differentiation.md)
+
 [Alternative Reference Genome Complete Analysis](./alternate-genome.md)
 
 </div>
