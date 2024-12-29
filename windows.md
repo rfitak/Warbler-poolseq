@@ -160,7 +160,7 @@ length(count[count > 2])
 write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
 ```
 
-### Step 3: Find Find overlapping genes
+### Step 3: Find overlapping genes
 The last step of this section is to find the protein-coding genes annotated in or nearby these outlier windows. First, we downloaded the reference genome annotation file.
 
 ```bash
@@ -181,4 +181,8 @@ grep -v "^#" Aarun.genes.gff | \
    sort | uniq
    # 13,698
 ```
-In total, there are 15,576 annotated genes, but 1,878 were pseudogenes, resulting in 13,698 protein-coding genes.
+In total, there are 15,576 annotated genes, but 1,878 were pseudogenes, resulting in 13,698 protein-coding genes. Next, we prepared the outlier windows containing ≥2 significant SNPs in bed format, and added 25 kb flanking region to each window. This flanking region is consistent with that of [Sly et al. 2022](https://doi.org/10.1073/pnas.2120482119). Last, we had to collapse the windows since some of them overlapped, and we didn't want to artificially return the same genes multiple times. All window-based analyses were perofrmed using [BEDtools v2.27.1](https://doi.org/10.1093/bioinformatics/btq033).
+
+```bash
+xxxx
+```
