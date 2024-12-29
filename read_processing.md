@@ -43,7 +43,7 @@ https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/013/398/685/GCA_013398685.1_ASM1339
 
 # Uncompress the file and change its name
 gunzip GCA_013398685.1_ASM1339868v1_genomic.fna.gz
-mv GCA_013398685.1_ASM1339868v1_genomic.fna.gz Aarun.fa
+mv GCA_013398685.1_ASM1339868v1_genomic.fna Aarun.fa
 
 # Report basic sequencing statistics
 seqstats Aarun.fa
