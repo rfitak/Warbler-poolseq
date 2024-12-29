@@ -164,13 +164,21 @@ write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", ro
 The last step of this section is to find the protein-coding genes annotated in or nearby these outlier windows. First, we downloaded the reference genome annotation file.
 
 ```bash
-# Download the reference genome from NCBI's FTP site
+# Download the reference annotation from NCBI's FTP site
 wget \
 https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/013/398/685/GCA_013398685.1_ASM1339868v1/GCA_013398685.1_ASM1339868v1_genomic.gff.gz
 
 # Uncompress the file and change its name
 gunzip GCA_013398685.1_ASM1339868v1_genomic.gff.gz
-mv GCA_013398685.1_ASM1339868v1_genomic.gff Aarun.fa
+mv GCA_013398685.1_ASM1339868v1_genomic.gff Aarun.gff
 
+# Get just the location of full gene regions
+grep -P "Genbank\tgene" Aarun.gff > Aarun.genes.gff
 
+# Print list of unique gene IDs
+grep -v "^#" Aarun.genes.gff | \
+   perl -ne '/ID=gene-(ACRARU_[^;]+);/; print "$1\n"' | \
+   sort | uniq
+   # 13,698
 ```
+In total, there are 15,576 annotated genes, but 1,878 were pseudogenes, resulting in 13,698 protein-coding genes.
