@@ -76,7 +76,7 @@ library(ggplot2)
 library(patchwork)
 p1 <- ggplot(windows, aes(x = lengths)) + geom_histogram() + scale_x_continuous(trans='log10')
 p2 <- ggplot(windows, aes(x = SNPcount)) + geom_histogram() + scale_x_continuous(trans='log10')
-png(file = "windows.hist.pdf", width = 16, height = 10)
+png(file = "windows.hist.png", width = 16, height = 10)
 p1 + p2
 dev.off()
 ```
