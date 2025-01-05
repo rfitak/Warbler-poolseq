@@ -166,7 +166,7 @@ length(count[count > 2])
 write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
 ```
 
-_Manhatten plotting code_
+_Manhatten plot code_
 ```R
 # Load qqman library
 library(qqman)
