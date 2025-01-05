@@ -166,6 +166,38 @@ length(count[count > 2])
 write.table(outliers, file = "outlier-windows.fst.csv", quote = F, sep = ",", row.names = F, col.names = T)
 ```
 
+_Manhatten plotting code_
+```R
+# Load qqman library
+library(qqman)
+
+# Read in and prep full dataset
+data <- read.csv("windows.fst.csv", header=T)
+data$CHR <- as.numeric(factor(data$Chrom, labels = 1:length(unique(data$Chrom))))
+data$BP <- (data$WindowStop + data$WindowStart) / 2
+data$SNP = paste0(data$Chrom, "-", data$BP)
+
+# Read in and prep just the significant windows
+data.sig <- read.csv("outlier-windows.fst.csv", header = T)
+data.sig$BP <- (data.sig$WindowStop + data.sig$WindowStart) / 2
+data.sig$SNP = paste0(data.sig$Chrom, "-", data.sig$BP)
+
+# Make Manhatten plot
+pdf(file = "Rplots2.pdf", width = 16, height = 10)
+manhattan(data, chrlabs = rep("", length(unique(data$CHR))),
+   p = "MeanY",
+   logp = F,
+   cex = 1.0,
+   col = c("blue4", "orange3"),
+   suggestiveline = F,
+   genomewideline = F,
+   xlab = "Scaffold",
+   ylab = "FST",
+   xaxt = "n",
+   highlight = data.sig$SNP)
+dev.off()
+```
+
 ### Step 3: Find overlapping genes
 The last step of this section is to find the protein-coding genes annotated in or nearby these outlier windows. First, we downloaded the reference genome annotation file.
 
