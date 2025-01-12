@@ -1,5 +1,5 @@
 # Detecting a genetic effect by season
-TBD
+In this section we tested the hypothesis that there is a large rgenetic contribution to the spring migration timing as opposed to the autumn migraton timing.  In essense, we expect the differentiation to be higher between _early_ vs. _late_ chronoptypes in the spring as opposed to the fall. The quantify differentiation, we use both F<sub>ST</sub> and allele frequency differentiation.
 
 ```bash
 # Read in PoPoolation files
