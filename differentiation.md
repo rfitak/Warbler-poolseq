@@ -3,7 +3,7 @@ In this section we tested the hypothesis that there is a large rgenetic contribu
 The key files needed are:
 - _pools.fst_: per site F<sub>ST</sub> calculated with _popoolation2_
 - _pools.fet_: per site Fisher's exact test of allele frequency differentiation calculated with _popoolation2_
-- _pools_pwc_: per site pairwise allele frequency differences
+- _pools_pwc_: per site pairwise allele frequency differences calculated with _popoolation2_
 
 We are only interested in the **1v2**__ (Early Spring vs Late Spring) and **3v4**__ (Early Autumn vs Late Autumn) comparisons.
 
