@@ -5,7 +5,7 @@ The key files needed are:
 - _pools.fet_: per site Fisher's exact test of allele frequency differentiation calculated with _popoolation2_
 - _pools_pwc_: per site pairwise allele frequency differences calculated with _popoolation2_
 
-We are only interested in the **1v2**__ (Early Spring vs Late Spring) and **3v4**__ (Early Autumn vs Late Autumn) comparisons.
+We are only interested in the **1v2** (Early Spring vs Late Spring) and **3v4** (Early Autumn vs Late Autumn) comparisons.
 
 ```bash
 # Read in PoPoolation files
