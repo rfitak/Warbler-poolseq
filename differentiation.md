@@ -82,6 +82,17 @@ data.sig <- read.csv("outlier-windows.fst.csv", header = T)
 data.sig$BP <- (data.sig$WindowStop + data.sig$WindowStart) / 2
 data.sig$SNP = paste0(data.sig$Chrom, "-", data.sig$BP)
 pdf(file = "Rplots2.pdf", width = 16, height = 10)
-manhattan(data, chrlabs = rep("", length(unique(data$CHR))), p = "MeanY", logp = F, cex = 1.0, col = c("blue4", "orange3"), suggestiveline = F, genomewideline = F, xlab = "Scaffold", ylab = "FST", xaxt = "n", highlight = data.sig$SNP)
+manhattan(data,
+	chrlabs = rep("", length(unique(data$CHR))),
+	p = "MeanY",
+	logp = F,
+	cex = 1.0,
+	col = c("blue4", "orange3"),
+	suggestiveline = F,
+	genomewideline = F,
+	xlab = "Scaffold",
+	ylab = "FST",
+	xaxt = "n",
+	highlight = data.sig$SNP)
 dev.off()
 ```
