@@ -57,7 +57,7 @@ mean of x mean of y
 ```
 
 ### Manhattan plotting code
-Below is some code to make a manhattan plot. Ths utilizes the `manhatten()` function in the R package [qqman v1.9](https://cran.r-project.org/web/packages/qqman/). However, I didn't like the `manhatten()` function, so I made a modified version, `manhatten2()` that is available here: [manhattan2.R](./manhatten2.R).
+Below is some code to make a manhattan plot. Ths utilizes the `manhatten()` function in the R package [qqman v1.9](https://cran.r-project.org/web/packages/qqman/). However, I didn't like the `manhatten()` function, so I made a modified version, `manhatten2()` that is available here: [manhattan2.R](./manhattan2.R).
 
 ```R
 # Load libraries
