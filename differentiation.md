@@ -56,6 +56,47 @@ mean of x mean of y
 0.1103028 0.1092994 
 ```
 
+### Manhattan plotting code
+Below is some code to make a manhattan plot. Ths utilizes the `manhatten()` function in the R package [qqman v1.9](https://cran.r-project.org/web/packages/qqman/). However, I didn't like the `manhatten()` function, so I made a modified version, `manhatten2()` that is available here: [manhattan2.R](./manhatten2.R).
+
+```R
+# Load libraries
+library(scales)
+library(Cairo)
+setHook(packageEvent("grDevices", "onLoad"), function(...) grDevices::X11.options(type='cairo'))
+options(device='x11')
+x11 = function (...) grDevices::x11(...,type='cairo')
+
+# Load manhatten2 function
+source("manhattan2.R")
+
+# Prep data
+data <- read.csv("windows.fst.csv", header=T)
+data$CHR <- as.numeric(factor(data$Chrom, labels = 1:length(unique(data$Chrom))))
+data$BP <- (data$WindowStop + data$WindowStart) / 2
+data$SNP = paste0(data$Chrom, "-", data$BP)
+data.sig <- read.csv("outlier-windows.fst.csv", header = T)
+data.sig$BP <- (data.sig$WindowStop + data.sig$WindowStart) / 2
+data.sig$SNP = paste0(data.sig$Chrom, "-", data.sig$BP)
+
+# Build manhatten plot
+manhattan2(
+	data2,
+	chrlabs = rep("", length(unique(data2$CHR))),
+	p = "MeanY",
+	logp = F,
+	col = c("Cadet Blue 3"),
+	col2 = "Royal Blue 3",
+	suggestiveline = F,
+	genomewideline = F,
+	xlab = "Scaffold",
+	ylab = "FST",
+	xaxt = "n",
+	highlight = data.sig$SNP)
+axis(side = 2, lwd = 2, labels = F)
+axis(side = 1, lwd = 2, labels = F)
+```
+
 Here is some extra R plotting code:
 ```R
 library(ggplot2)
